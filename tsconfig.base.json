@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@NX-MF-POC/editorial": ["libs/editorial/src/index.ts"],
+      "@NX-MF-POC/header": ["libs/header/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

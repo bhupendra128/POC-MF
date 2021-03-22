@@ -1,23 +1,12 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/react"
-  },
+  "cli": { "defaultCollection": "@nrwl/react" },
   "defaultProject": "mf-todos",
   "generators": {
     "@nrwl/react": {
-      "application": {
-        "style": "css",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "css"
-      },
-      "library": {
-        "style": "css",
-        "linter": "eslint"
-      }
+      "application": { "style": "css", "linter": "eslint", "babel": true },
+      "component": { "style": "css" },
+      "library": { "style": "css", "linter": "eslint" }
     }
   },
   "projects": {
@@ -70,13 +59,9 @@
         },
         "serve": {
           "executor": "@nrwl/web:dev-server",
-          "options": {
-            "buildTarget": "mf-todos:build"
-          },
+          "options": { "buildTarget": "mf-todos:build" },
           "configurations": {
-            "production": {
-              "buildTarget": "mf-todos:build:production"
-            }
+            "production": { "buildTarget": "mf-todos:build:production" }
           }
         },
         "lint": {
@@ -108,15 +93,81 @@
             "devServerTarget": "mf-todos:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "mf-todos:serve:production"
-            }
+            "production": { "devServerTarget": "mf-todos:serve:production" }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": { "lintFilePatterns": ["apps/mf-todos-e2e/**/*.{js,ts}"] }
+        }
+      }
+    },
+    "editorial": {
+      "root": "libs/editorial",
+      "sourceRoot": "libs/editorial/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/editorial",
+            "tsConfig": "libs/editorial/tsconfig.lib.json",
+            "project": "libs/editorial/package.json",
+            "entryFile": "libs/editorial/src/index.ts",
+            "external": ["react", "react-dom"],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [{ "glob": "README.md", "input": ".", "output": "." }]
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/mf-todos-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["libs/editorial/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/editorial"],
+          "options": {
+            "jestConfig": "libs/editorial/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "header": {
+      "root": "libs/header",
+      "sourceRoot": "libs/header/src",
+      "projectType": "library",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/header",
+            "tsConfig": "libs/header/tsconfig.lib.json",
+            "project": "libs/header/package.json",
+            "entryFile": "libs/header/src/index.ts",
+            "external": ["react", "react-dom"],
+            "babelConfig": "@nrwl/react/plugins/bundle-babel",
+            "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+            "assets": [{ "glob": "README.md", "input": ".", "output": "." }]
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/header/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/header"],
+          "options": {
+            "jestConfig": "libs/header/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
