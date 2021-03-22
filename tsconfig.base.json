@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@NX-MF-POC/editorial": ["libs/editorial/src/index.ts"],
-      "@NX-MF-POC/header": ["libs/header/src/index.ts"]
+      "@NXMFPOC/editorial": ["libs/editorial/src/index.ts"],
+      "@NXMFPOC/header": ["libs/header/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
